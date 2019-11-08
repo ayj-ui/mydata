@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务显示</title>
+</head>
+<body style="width: 100px;height: 500px; background-color: #8dffa9" >
+<span id="ds">范德萨发生的富商大贾</span><!--不会自动换行-->
+<!--
+html定义了，汉字横向到达边界，会自动换行，允许纵向出界
+英文数字横向不会自动换行，允许横向出界
+子模块也允许出界
+-->
+
+可见区域高，宽ccccccccccccc：<span id="kj"></span>  //这一行就不会超过body宽度，会自动换行
+    可见区域(包括边框线)高，宽：<span id="k"></span>
+    <div style="width: 150px;height: 200px;background-color: black">ssssssssssssssssssssssssssssssssssssssssssssssss</div>
+
+<script>
+    /*document.getElementById("kj").innerText = document.body.clientHeight+","+document.body.clientWidth
+    document.getElementById("k").innerText = document.body.offsetHeight+','+document.body.offsetWidth
+    document.getElementById("ds").innerText = document.body.offsetHeight+','+document.body.offsetWidth*/
+</script>
+<a href="http://www.baidu.com" accesskey="h">HTML 教程</a><br />
+<span accesskey="c" contenteditable="true">xcx</span>
+vvvvxxx
+</body>
+</html>

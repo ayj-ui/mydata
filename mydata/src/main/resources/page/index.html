@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span id="data"></span>
+<h1 style="color: #8dffa9">你好，来添加今天的工作任务吧！！！</h1>
+<hr>
+<form action="/add">
+    任务：<input name="task1" type="text">
+    <input type="submit" name="提交"><!---->
+</form>
+<script>
+    var data = new Date();
+    document.getElementById("data").innerText=data.getFullYear()+"年"+data.getMonth()+"月"+
+        data.getDay()+"日"+data.getHours()+"时"+data.getMinutes()+"分"+data.getSeconds()+"秒";
+</script>
+</body>
+</html>
