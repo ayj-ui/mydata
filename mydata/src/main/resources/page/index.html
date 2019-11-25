@@ -9,8 +9,13 @@
 <h1 style="color: #8dffa9">你好，来添加今天的工作任务吧！！！</h1>
 <hr>
 <form action="/add">
-    任务：<input name="task1" type="text">
+    任务：<input name="task" type="text">
     <input type="submit" name="提交"><!---->
+    <select name="weather">
+        <option value="sunny">晴天</option>
+        <option value="rainy">雨天</option>
+        <option value="cloudy">阴天</option>
+    </select>
 </form>
 <script>
     var data = new Date();

@@ -1,15 +1,19 @@
 package com.example.mydata.controller;
 
+import com.example.mydata.EnumUtil.WeatherEnum;
 import com.example.mydata.common.JsonResult;
 import com.example.mydata.model.Task;
 import com.example.mydata.service.TaskService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Date;
 
 @Controller
+@Api(value = "添加", description = "添加")
 public class MyTaskController {
 
     @Autowired
@@ -20,15 +24,18 @@ public class MyTaskController {
         return "index";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add",method = RequestMethod.GET)
     @ResponseBody
-    public JsonResult Add(String task1){
+    @ApiOperation(value = "入口方法", notes = "将token、apiCode、version、businessParams组合为Map(Json)类型参数")
+    public JsonResult Add(String task ,WeatherEnum weather){
 
-        Task task = new Task();
+        Task task1 = new Task();
         Date date = new Date();
-        task.setTime(date);
-        task.setDescription(task1);
-        taskServer.add(task);
-        return new JsonResult(task,"操作成功");
+        task1.setTime(date);
+        task1.setDescription(task);
+        //System.out.println("w="+WeatherEnum.valueOf(weather.toUpperCase()));
+        task1.setWeatherEnum(weather);
+        taskServer.add(task1);
+        return new JsonResult(task1,"操作成功");
     }
 }
