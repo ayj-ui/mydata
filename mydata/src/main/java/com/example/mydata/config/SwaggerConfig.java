@@ -35,10 +35,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("MoerService Gateway Doc")                       //标题
-                .description("摩尔服务授权网关 Api文档")                  //描述
-                .termsOfServiceUrl("http://www.moerlong.com")           //条款地址（不可见）
-                .contact("moerlong")                                    //作者信息
+                .title("我的swagger")                       //标题
+                .description("我的 Api文档")                  //描述
                 .version("1.0")                                         //版本号
                 .build();
     }
