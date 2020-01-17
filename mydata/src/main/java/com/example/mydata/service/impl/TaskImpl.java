@@ -6,7 +6,6 @@ import com.example.mydata.model.Task;
 import com.example.mydata.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class TaskImpl implements TaskService {
@@ -19,8 +18,8 @@ public class TaskImpl implements TaskService {
         taskMapper.insert(task);
     }
 
-    @Override
-    public Task select() {
-        return taskMapper.selectByPrimaryKey(1);
-    }
+    /*@Override
+    public Task select(Integer id) {
+        return taskMapper.selectByPrimaryKey(id);
+    }*/
 }
