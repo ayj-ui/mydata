@@ -12,7 +12,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.SocketTimeoutException;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -50,13 +49,11 @@ public class MyTaskController {
     }
 
 
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "入口方法", notes = "将token、apiCode、version、businessParams组合为Map(Json)类型参数")
     public JsonResult Add(Task task){
-
         System.out.println("date="+new Date());
-
         taskServer.add(task);
         return new JsonResult(task,"操作成功");
     }

@@ -9,8 +9,8 @@
 <h1 style="color: #8dffa9">你好，来添加今天的工作任务吧！！！</h1>
 <hr>
 <form action="/add">
-    任务：<input name="description" type="text">
-    <select name="weatherEnum">
+    任务：<input id="description" name="description" type="text">
+    <select id="weatherEnum" name="weatherEnum">
         <option value="sunny">晴天</option>
         <option value="rainy">雨天</option>
         <option value="cloudy">阴天</option>
@@ -37,8 +37,16 @@
                 document.getElementById("ret").innerHTML="返回成功"
             }
         }
-        http.open("GET","add"+"?description=1111&weatherEnum=sunny",true);
-        http.send();
+        var description=document.getElementById("description");
+
+        var weatherEnum=(document.getElementById("weatherEnum"));
+        console.log(description.text+'xx'+weatherEnum.selected)
+        http.open("POST","add",true);
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        http.send("description="+description+",weatherEnum="+weatherEnum);
+
+ /*       http.open("GET","add"+"?description=1111&weatherEnum=sunny",false);
+        http.send();*/
     }
     var data = new Date();
     document.getElementById("data").innerText=data.getFullYear()+"年"+data.getMonth()+"月"+
