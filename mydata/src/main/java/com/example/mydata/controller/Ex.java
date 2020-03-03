@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.net.SocketTimeoutException;
 import java.util.logging.Logger;
 
-@ControllerAdvice(basePackageClasses={MyTaskController.class})
+@ControllerAdvice(basePackageClasses={MyController.class})
 public class Ex {
     /**
      * 处理 SocketTimeoutException 异常

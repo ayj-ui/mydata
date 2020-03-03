@@ -5,6 +5,7 @@ import com.example.mydata.model.Task;
 import com.example.mydata.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -12,6 +13,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -59,14 +63,23 @@ public class MyTaskController {
     }
     @ApiOperation("导出excel")
     @RequestMapping(value = "/exportExcel",method = RequestMethod.GET)
-    public void exportExcel(){
-        XSSFWorkbook book  = new XSSFWorkbook();
+    public void exportExcel(HttpServletResponse response){
+        HSSFWorkbook book  = new HSSFWorkbook();
         Sheet sheet = book.createSheet("表格1");
-        Row row=sheet.createRow(2);
-        Cell cell=row.createCell(3);
-        cell.setCellValue("1");
-        cell.setCellValue("2");
-        cell.setCellValue("3");
+        Row row=sheet.createRow(0);
+        row.createCell(0).setCellValue("id");
 
+        Row row1=sheet.createRow(1);
+        row1.createCell(0).setCellValue("111");
+
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/octet-stream; charset=utf-8");
+        response.setHeader("Content-disposition", "attachment;filename=" + "电风扇"+".xls");
+        try {
+            response.flushBuffer();
+            book.write(response.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
