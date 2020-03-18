@@ -17,12 +17,12 @@ public class Ex {
      * @param e                  异常
      * @return
      */
-    @ResponseBody
+    /*@ResponseBody
     @ExceptionHandler(value = SocketTimeoutException.class)
     public String businessExceptionHandler(HttpServletRequest httpServletRequest, SocketTimeoutException e) {
         Logger logger= (Logger) LoggerFactory.getLogger("");
         logger.info("hello world");
         System.out.println("业务异常。code:" + e.getMessage());
         return "当前访问人数较多，请稍候";
-    }
+    }*/
 }

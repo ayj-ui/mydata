@@ -5,6 +5,7 @@ import com.example.mydata.model.Task;
 import com.example.mydata.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Param;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -53,6 +56,25 @@ public class MyTaskController {
     }
 
 
+    @RequestMapping(value = "/time",method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "添加时间")
+    public void atime(){
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Long i=System.currentTimeMillis();
+        System.out.println("ti="+dateFormat.format(String.valueOf(System.currentTimeMillis())));
+
+        System.out.println("time="+System.currentTimeMillis());
+        System.out.println("date="+new Date());
+        System.out.println("he="+new Date(System.currentTimeMillis()));
+        System.out.println("he="+new Date(System.currentTimeMillis()-1000));
+
+
+    }
+
+
+
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "入口方法", notes = "将token、apiCode、version、businessParams组合为Map(Json)类型参数")
@@ -82,4 +104,6 @@ public class MyTaskController {
             e.printStackTrace();
         }
     }
+
+
 }
