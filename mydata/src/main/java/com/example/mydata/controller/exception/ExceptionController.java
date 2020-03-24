@@ -1,15 +1,17 @@
-package com.example.mydata.controller;
+package com.example.mydata.controller.exception;
 
-import org.slf4j.LoggerFactory;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
 import java.net.SocketTimeoutException;
-import java.util.logging.Logger;
 
 @ControllerAdvice(basePackageClasses={MyController.class})
-public class Ex {
+@Slf4j
+public class ExceptionController {
     /**
      * 处理 SocketTimeoutException 异常
      *
@@ -17,12 +19,11 @@ public class Ex {
      * @param e                  异常
      * @return
      */
-    /*@ResponseBody
+    @ResponseBody
     @ExceptionHandler(value = SocketTimeoutException.class)
     public String businessExceptionHandler(HttpServletRequest httpServletRequest, SocketTimeoutException e) {
-        Logger logger= (Logger) LoggerFactory.getLogger("");
-        logger.info("hello world");
+        log.info("socketTimeOutException捕捉");
         System.out.println("业务异常。code:" + e.getMessage());
         return "当前访问人数较多，请稍候";
-    }*/
+    }
 }

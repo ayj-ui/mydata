@@ -1,4 +1,4 @@
-package com.example.mydata.controller;
+package com.example.mydata.controller.exception;
 
 import com.example.mydata.common.JsonResult;
 import com.example.mydata.model.Task;
@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 @Controller
-@Api(value = "测试1", description = "测试1")
+@Api(value = "测异常", description = "测异常")
 public class MyController {
 
     @Autowired
