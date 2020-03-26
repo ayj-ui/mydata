@@ -5,6 +5,7 @@ import com.example.mydata.model.Task;
 import com.example.mydata.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -12,7 +13,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +28,7 @@ import java.util.logging.Logger;
 
 @Controller
 @Api(value = "测试", description = "测试")
+@Slf4j
 public class MyTaskController {
 
     @Autowired
@@ -106,4 +110,14 @@ public class MyTaskController {
     }
 
 
+    @Value("${name}")
+    private String name;
+
+    @ApiOperation("获取yml/properties内容")
+    @RequestMapping(value = "/getName", method = RequestMethod.GET)
+    @ResponseBody
+    public void getName1(){
+        log.info("pro="+name);
+
+    }
 }
