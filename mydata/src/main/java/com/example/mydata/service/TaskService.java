@@ -7,6 +7,6 @@ public interface TaskService {
 
     void add(Task task);
 
-    /*Task select(Integer id);*/
+    Task select(Integer id);
 
 }

@@ -18,8 +18,8 @@ public class TaskImpl implements TaskService {
         taskMapper.insert(task);
     }
 
-    /*@Override
+    @Override
     public Task select(Integer id) {
         return taskMapper.selectByPrimaryKey(id);
-    }*/
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.mydata.controller;
+package com.example.mydata.controller.laz;
 
 import com.example.mydata.common.JsonResult;
 import com.example.mydata.model.Task;
@@ -6,6 +6,7 @@ import com.example.mydata.service.TaskService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.core.ApplicationContext;
 import org.apache.ibatis.annotations.Param;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -14,6 +15,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +29,7 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 @Controller
-@Api(value = "测试", description = "测试")
+//@Api(value = "测试", description = "测试")
 @Slf4j
 public class MyTaskController {
 
@@ -42,6 +44,14 @@ public class MyTaskController {
     @RequestMapping("/addTest")
     public String add(){
         return "add";
+    }
+
+    @RequestMapping(value = "/select",method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation("查询")
+    public Task select(Integer id){
+
+        return taskServer.select(id);
     }
 
     @RequestMapping(value = "/ex",method = RequestMethod.GET)
@@ -120,4 +130,18 @@ public class MyTaskController {
         log.info("pro="+name);
 
     }
+
+
+    @Value("${mm}")
+    private int id;
+
+    @ApiOperation("获取yml/properties内容configrationProperties计算")
+    @RequestMapping(value = "/getServerPortj", method = RequestMethod.GET)
+    @ResponseBody
+    public void getServerPortj(){
+        log.info("id="+id);
+
+    }
+
+
 }
