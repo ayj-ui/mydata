@@ -1,6 +1,6 @@
-package com.example.mydata.controller;
+package com.example.mydata.controller.uploadfile;
 
-import com.example.mydata.model.User;
+import com.example.mydata.controller.timer.TimerController;
 import com.example.mydata.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,34 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.List;
 
 
 @RestController
-@RequestMapping("/testController")
-@Api(value = "测试",description = "cc")
+@RequestMapping("/uploadFileController")
+@Api(value = "测试上传文件",description = "uploadFile")
 @Slf4j
-public class TestController1 {
+public class UploadFileController {
 
     @Autowired
     UserService userService;
 
-    //添加
-    @RequestMapping(value = "/insertUser",method = RequestMethod.POST)
-    @ApiOperation(value = "添加user")
-    public String insertUser(@RequestBody User user){
-      userService.user(user);
-      return "OK";
-    }
-
-    @RequestMapping(value = "/findUserById",method = RequestMethod.GET)
-    @ApiOperation(value = "user")
-    public User findUserById(int id){
-        return userService.user(id);
-    }
+    @Autowired
+    TimerController controller;
 
     /*
     * 单个文件上传

@@ -14,7 +14,7 @@ public class UserImpl implements UserService {
 
     @Override
     public User user(int id) {
-        Object object = userMapper.selectById(id);
+        //Object object = userMapper.selectById(id);
         return null;
     }
 

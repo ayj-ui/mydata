@@ -54,5 +54,6 @@
          <table tableName="tel_bill_record" domainObjectName="DSTelBillRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
         <table tableName="task" ></table>
         <table tableName="user" ></table>
+        <table tableName="timer" ></table>
     </context>
 </generatorConfiguration>
